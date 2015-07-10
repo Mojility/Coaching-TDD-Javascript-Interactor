@@ -1,0 +1,31 @@
+<h1 class="heading -large">{{ home.title }}</h1>
+
+<section ng-controller="AccountController as account">
+    <h1>Account Details: {{ account.name }}</h1>
+
+    <section ng-controller="SalesController as sales">
+        <p ng-class="{'warning': sales.balance_warning()}">
+            {{account.balance()}}
+            ({{sales.account_type_label()}})
+        </p>
+
+        <section id="salesSection" ng-class="{'warning': sales.balance_warning()}">
+            <section ng-if="sales.balance_warning()">
+                <p>{{sales.suggested_action_text()}}</p>
+
+                <p>{{sales.suggested_products_heading}}</p>
+                <ul class="productList">
+                    <li ng-repeat="product in sales.suggested_products()"
+                        ng-click="sales.upgrade_account(product)"
+                        ng-class="product.frequency">
+                        {{product.friendly_name()}}
+                    </li>
+                </ul>
+            </section>
+            <section ng-if="!sales.balance_warning()">
+                Everything appears to be running smoothly from a billing perspective.
+            </section>
+        </section>
+    </section>
+
+</section>

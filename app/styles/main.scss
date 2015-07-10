@@ -1,0 +1,49 @@
+@import 'vars';
+
+body {
+  font-family: Helvetica, sans-serif;
+  color: $font-colour-dark;
+  background-color: $background-light;
+}
+
+#salesSection {
+  background-color: $ok-highlight;
+  padding: 6pt;
+
+  &.warning {
+    background-color: $warning-highlight;
+  }
+}
+
+p {
+  color: $font-colour-dark;
+
+  &.warning {
+    color: $font-colour-warning;
+  }
+}
+
+ul.productList {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    width: 100pt;
+    border-radius: 6pt;
+    color: $button-text-colour;
+    padding: 4pt 8pt;
+    margin: 2pt 0 2pt 8pt;
+    display: inline-block;
+
+    &.monthly {
+      background-color: #008800;
+    }
+
+    &.once {
+      background-color: #cc8800;
+    }
+  }
+
+}
