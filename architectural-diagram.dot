@@ -1,0 +1,62 @@
+digraph G {
+  rankdir=BT
+  node [ style=filled, fillcolor=white ]
+
+  subgraph cluster_0 {
+
+    label="Primr Core"
+    style=filled
+    color="#ddffdd"
+
+    // Primr
+    AccountGateway
+    ProductGateway
+
+    SalesAgent
+
+    PriceFormatter
+    Product
+
+    Product -> PriceFormatter
+
+    SalesAgent -> PriceFormatter
+    SalesAgent -> ProductGateway
+    SalesAgent -> AccountGateway
+
+    ProductGateway -> Product
+
+  }
+
+  subgraph cluster_1 {
+
+    label="Angular Primr Bridge"
+    style=filled
+    color="#ffdddd"
+
+    subgraph cluster_0_0 {
+      label="Services"
+      color="#ffeeee"
+
+      AccountGatewayService
+      SalesAgentService
+    }
+
+    subgraph cluster_0_1 {
+      label="Controllers"
+      color="#ffffee"
+
+      HomeController
+      AccountController
+      SalesController
+    }
+
+    AccountController -> AccountGatewayService
+    SalesController -> SalesAgentService
+
+  }
+
+  AccountGatewayService -> AccountGateway
+  SalesAgentService -> SalesAgent
+
+}
+
